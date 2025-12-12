@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:receipes/recipe_detail.dart';
 import 'Model/recipe.dart';
 
 void main() {
@@ -42,32 +43,59 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: SafeArea(child: Container(
+      body: SafeArea(
+          child: Container(
         child: ListView.builder(
           itemBuilder: (BuildContext context, int index) {
-              return buildRecipeCard(Recipe.samples[index]);
+            return GestureDetector(
+              onTap: () {
+                print('You tapped on ${Recipe.samples[index].imgLabel}');
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) {
+                    return RecipeDetail(recipe: Recipe.samples[index],);
+                  }),
+                );
+              },
+              child: buildRecipeCard(Recipe.samples[index]),
+            );
           },
-          itemCount: Recipe.samples.length
+          itemCount: Recipe.samples.length,
         ),
       )),
     );
   }
- 
+
   Widget buildRecipeCard(Recipe recipe) {
     return Card(
-      child: Column(
-        children: <Widget>[
-          Image(image: AssetImage(recipe.imgUrl)),
-          Text(recipe.imgLabel),
-        ],
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              recipe.imgLabel,
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Palatino',
+              ),
+            ),
+            const SizedBox(height: 14.0),
+            Image(image: AssetImage(recipe.imgUrl)),
+            const SizedBox(height: 14.0),
+            Text('I am Hungry')
+          ],
+        ),
       ),
     );
-
   }
 }
- 
