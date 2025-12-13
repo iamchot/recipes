@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:receipes/recipe_detail.dart';
 import 'Model/recipe.dart';
 
@@ -83,10 +84,9 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Text(
               recipe.imgLabel,
-              style: const TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                fontFamily: 'Palatino',
               ),
             ),
             const SizedBox(height: 14.0),

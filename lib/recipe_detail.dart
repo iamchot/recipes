@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:receipes/Model/recipe.dart';
 
 class RecipeDetail extends StatelessWidget {
@@ -19,8 +20,7 @@ class RecipeDetail extends StatelessWidget {
             SizedBox(height: 16),
             Text(
               recipe.imgLabel,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            
+              style: GoogleFonts.poppins(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             Text(
               recipe.description,
